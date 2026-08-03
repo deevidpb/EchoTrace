@@ -1,0 +1,30 @@
+name: Backend
+
+on:
+  push:
+    paths:
+      - "rws/**"
+      - ".github/workflows/backend.yml"
+  pull_request:
+    paths:
+      - "rws/**"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: rws
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - run: mvn -B verify
