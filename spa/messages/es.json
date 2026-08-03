@@ -1,0 +1,111 @@
+{
+  "login": {
+    "features": {
+      "1": "Top tracks & artistas",
+      "2": "Mapa de géneros",
+      "3": "Comunidad & compatibilidad",
+      "4": "Historial reciente",
+      "5": "Insights con IA"
+    },
+    "conecta": "Conecta con Spotify en segundos",
+    "universo": "Tu universo sonoro, visualizado",
+    "title":{
+      "1": "Tus estadísticas de Spotify como",
+      "2": "nunca",
+      "3": "las viste"
+    },
+    "parrafo": "Descubre tus artistas y canciones favoritas, explora tus géneros y sigue tus tendencias de escucha en un panel futurista y en tiempo real.",
+    "boton": {
+      "iniciar": "Iniciar sesión con Spotify",
+      "cargando": "Conectando…"
+    },
+    "oauth": "Acceso seguro vía OAuth. Solo lectura de tu actividad.",
+    "disclaimer": "EchoTrace no está afiliado a Spotify. Hecho para fans de la música."
+  },
+
+  "dashboard":{
+    "live": "Resumen en vivo",
+    "saludo": "Hola",
+    "saludo2": "Esto suena a ti.",
+    "cargando": "Cargando tu universo sonoro...",
+    "disclaimer": "Estadísticas proporcionadas por tu cuenta de Spotify.",
+
+    "break": {
+      "noData": "No hay datos suficientes",
+      "escuchado": "Tu artista más escuchado en este periodo",
+      "top": "Nuevo en tu top",
+      "top1": "Tu Top 1",
+      "revelacion": "Artista Revelación",
+      "subida": "Mayor Subida"
+    },
+
+    "recently": {
+      "tiempo": {
+        "minutos": "Hace {count} min",
+        "horas": "Hace {count} h",
+        "dias": "Hace {count} días"
+      },
+      "ahora": "Ahora mismo",
+      "title": "Escuchado recientemente",
+      "subtitle": "Tu radar más reciente"
+    },
+
+    "player": {
+      "noPlay": "No hay reproducción activa",
+      "pausado": "Pausado",
+      "reproduciendo": "Reproduciendo"
+    },
+
+    "cards": {
+      "1": {
+        "label": "Playlists",
+        "sub": "en tu biblioteca"
+      },
+      "2": {
+        "label": "Canciones",
+        "sub": "que te gustan"
+      },
+      "3": {
+        "label": "Artistas",
+        "sub": "que sigues"
+      },
+      "4": {
+        "label": "Seguidores",
+        "sub": "en tu perfil"
+      }
+    },
+
+    "albums": {
+      "titulo": "Top Álbumes"
+
+    },
+
+    "artists": {
+      "rank": {
+        "nuevo": "Nuevo"
+      },
+      "title": "Top artistas",
+      "sub": "Quién manda en tus oídos"
+    },
+
+    "tracks": {
+      "rank": {
+        "nuevo": "Nuevo"
+      },
+      "title": "Top canciones",
+      "sub": "Tus himnos del momento"
+    }
+  },
+
+  "topbar":{
+    "tiempos":{
+      "4sem": " 4 semanas",
+      "6mes": "6 meses",
+      "1ano": "1 año"
+    },
+    "paginas": {
+      "dashboard": "Estadísticas",
+      "social": "Social"
+    }
+  }
+}

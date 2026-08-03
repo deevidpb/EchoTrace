@@ -1,0 +1,3 @@
+spotify:
+  api:
+    base-url: http://localhost:${mock.server.port:0}

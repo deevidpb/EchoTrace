@@ -1,0 +1,110 @@
+{
+  "login": {
+    "features": {
+      "1": "Top tracks i artistes",
+      "2": "Mapa de gèneres",
+      "3": "Comunitat i compatibilitat",
+      "4": "Historial recent",
+      "5": "Insights amb IA"
+    },
+    "conecta": "Connecta amb Spotify en segons",
+    "universo": "El teu univers sonor, visualitzat",
+    "title": {
+      "1": "Les teves estadístiques de Spotify com",
+      "2": "mai",
+      "3": "les has vist"
+    },
+    "parrafo": "Descobreix els teus artistes i cançons preferides, explora els teus gèneres i segueix les teves tendències d'escolta en un tauler futurista i en temps real.",
+    "boton": {
+      "iniciar": "Inicia sessió amb Spotify",
+      "cargando": "Connectant…"
+    },
+    "oauth": "Accés segur via OAuth. Només lectura de la teva activitat.",
+    "disclaimer": "EchoTrace no està afiliat a Spotify. Fet per a fans de la música."
+  },
+
+  "dashboard": {
+    "live": "Resum en viu",
+    "saludo": "Hola",
+    "saludo2": "Això sona a tu.",
+    "cargando": "Carregant el teu univers sonor...",
+    "disclaimer": "Estadístiques proporcionades pel teu compte de Spotify.",
+
+    "break": {
+      "noData": "No hi ha prou dades",
+      "escuchado": "El teu artista més escoltat en aquest període",
+      "top": "Nou al teu top",
+      "top1": "El teu Top 1",
+      "revelacion": "Artista Revelació",
+      "subida": "Major pujada"
+    },
+
+    "recently": {
+      "tiempo": {
+        "minutos": "Fa {count} min",
+        "horas": "Fa {count} h",
+        "dias": "Fa {count} dies"
+      },
+      "ahora": "Ara mateix",
+      "title": "Escoltat recentment",
+      "subtitle": "El teu radar més recent"
+    },
+
+    "player": {
+      "noPlay": "No hi ha cap reproducció activa",
+      "pausado": "En pausa",
+      "reproduciendo": "S'està reproduint"
+    },
+
+    "cards": {
+      "1": {
+        "label": "Llistes",
+        "sub": "a la teva biblioteca"
+      },
+      "2": {
+        "label": "Cançons",
+        "sub": "que t'agraden"
+      },
+      "3": {
+        "label": "Artistes",
+        "sub": "que segueixes"
+      },
+      "4": {
+        "label": "Seguidors",
+        "sub": "al teu perfil"
+      }
+    },
+
+    "albums": {
+      "titulo": "Top Àlbums"
+    },
+
+    "artists": {
+      "rank": {
+        "nuevo": "Nou"
+      },
+      "title": "Top artistes",
+      "sub": "Qui mana a les teves orelles"
+    },
+
+    "tracks": {
+      "rank": {
+        "nuevo": "Nou"
+      },
+      "title": "Top cançons",
+      "sub": "Els teus himnes del moment"
+    }
+
+  },
+  "topbar": {
+    "tiempos": {
+      "4sem": "4 setmanes",
+      "6mes": "6 mesos",
+      "1ano": "1 any"
+    },
+    "paginas": {
+      "dashboard": "Estadístiques",
+      "social": "Social"
+    }
+  }
+}

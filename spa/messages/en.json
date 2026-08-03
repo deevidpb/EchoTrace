@@ -1,0 +1,110 @@
+{
+  "login": {
+    "features": {
+      "1": "Top tracks & artists",
+      "2": "Genre map",
+      "3": "Community & compatibility",
+      "4": "Recent history",
+      "5": "AI insights"
+    },
+    "conecta": "Connect to Spotify in seconds",
+    "universo": "Your sound universe, visualized",
+    "title": {
+      "1": "Your Spotify stats like you've",
+      "2": "never",
+      "3": "seen them"
+    },
+    "parrafo": "Discover your favorite artists and songs, explore your genres, and follow your listening trends in a futuristic, real-time dashboard.",
+    "boton": {
+      "iniciar": "Log in with Spotify",
+      "cargando": "Connecting…"
+    },
+    "oauth": "Secure access via OAuth. Read-only access to your activity.",
+    "disclaimer": "EchoTrace is not affiliated with Spotify. Made for music fans."
+  },
+
+  "dashboard": {
+    "live": "Live recap",
+    "saludo": "Hi",
+    "saludo2": "This sounds like you.",
+    "cargando": "Loading your sound universe...",
+    "disclaimer": "Statistics provided by your Spotify account.",
+
+    "break": {
+      "noData": "There is not enough data",
+      "escuchado": "Your most listened artist in this period",
+      "top": "New in your top",
+      "top1": "Your Top 1",
+      "revelacion": "Breakthrough Artist",
+      "subida": "Biggest Climb"
+    },
+
+    "recently": {
+      "tiempo": {
+        "minutos": "{count} min ago",
+        "horas": "{count} h ago",
+        "dias": "{count} days ago"
+      },
+      "ahora": "Right now",
+      "title": "Recently played",
+      "subtitle": "Your most recent radar"
+    },
+
+    "player": {
+      "noPlay": "No active playback",
+      "pausado": "Paused",
+      "reproduciendo": "Playing"
+    },
+
+    "cards": {
+      "1": {
+        "label": "Playlists",
+        "sub": "in your library"
+      },
+      "2": {
+        "label": "Songs",
+        "sub": "that you like"
+      },
+      "3": {
+        "label": "Artists",
+        "sub": "you follow"
+      },
+      "4": {
+        "label": "Followers",
+        "sub": "on your profile"
+      }
+    },
+
+    "albums": {
+      "titulo": "Top Albums"
+    },
+
+    "artists": {
+      "rank": {
+        "nuevo": "New"
+      },
+      "title": "Top artists",
+      "sub": "Who rules your ears"
+    },
+
+    "tracks": {
+      "rank": {
+        "nuevo": "New"
+      },
+      "title": "Top tracks",
+      "sub": "Your anthems of the moment"
+    }
+
+  },
+  "topbar": {
+    "tiempos": {
+      "4sem": "4 weeks",
+      "6mes": "6 months",
+      "1ano": "1 year"
+    },
+    "paginas": {
+      "dashboard": "Stats",
+      "social": "Social"
+    }
+  }
+}
