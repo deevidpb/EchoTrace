@@ -74,3 +74,5 @@ spa/pnpm-lock.yaml
 
 .DS_Store
 Thumbs.db
+
+.env

@@ -1,0 +1,21 @@
+services:
+  rws:
+    build:
+      context: ./rws
+    environment:
+      CLIENT_ID: ${CLIENT_ID}
+      CLIENT_SECRET: ${CLIENT_SECRET}
+    container_name: spotify-stats-rws
+    ports:
+      - "8080:8080"
+
+  spa:
+    build:
+      context: ./spa
+    container_name: spotify-stats-spa
+    ports:
+      - "3000:3000"
+    depends_on:
+      - rws
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080

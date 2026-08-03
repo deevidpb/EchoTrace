@@ -45,21 +45,19 @@ class PlayerClientTest {
 
     @Test
     void testPlayerClientCreation() {
-        PlayerClient client = new PlayerClient(webClient, authorizedClientManager);
-
+        PlayerClient client = new PlayerClient(webClient, authorizedClientManager, "localhost");
         assertNotNull(client);
     }
 
     @Test
     void testPlayerClientExtendsSpotifyApiClient() {
-        PlayerClient client = new PlayerClient(webClient, authorizedClientManager);
-
+        PlayerClient client = new PlayerClient(webClient, authorizedClientManager, "localhost");
         assertInstanceOf(SpotifyApiClient.class, client);
     }
 
     @Test
     void currentlyPlayingAndRecentlyPlayedUseGetRequests() {
-        PlayerClient client = new PlayerClient(webClient, authorizedClientManager);
+        PlayerClient client = new PlayerClient(webClient, authorizedClientManager, "localhost");
         configureAuthenticatedClient("spotify-token");
 
         PlayerState playerState = new PlayerState();
@@ -91,7 +89,7 @@ class PlayerClientTest {
 
     @Test
     void playerActionsUseExpectedHttpMethods() {
-        PlayerClient client = new PlayerClient(webClient, authorizedClientManager);
+        PlayerClient client = new PlayerClient(webClient, authorizedClientManager, "localhost");
         configureAuthenticatedClient("spotify-token");
 
         WebClient.RequestBodyUriSpec requestSpec = mock(WebClient.RequestBodyUriSpec.class);

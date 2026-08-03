@@ -10,8 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class WebClientConfig {
 
     @Bean
-    public WebClient webClient(@Value("${spotify.api.base-url:https://api.spotify.com/v1}")
-                                   String baseUrl) {
+    public WebClient webClient(@Value("${spotify.api.base-url}") String baseUrl) {
 
         return WebClient.builder()
                 .baseUrl(baseUrl)

@@ -6,6 +6,7 @@ import com.onion.spotifystats.model.spotify.response.currentuser.CurrentUserPlay
 import com.onion.spotifystats.model.spotify.response.currentuser.CurrentUserSavedTracksResponse;
 import com.onion.spotifystats.model.spotify.response.topartists.TopArtistsResponse;
 import com.onion.spotifystats.model.spotify.response.toptracks.TopTracksResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -16,12 +17,13 @@ public class UserClient extends SpotifyApiClient{
     private static final String LIMIT = "limit";
     private static final String OFFSET = "offset";
 
-    public UserClient(WebClient webClient, OAuth2AuthorizedClientManager authorizedClientManager) {
-        super(webClient, authorizedClientManager);
+    public UserClient(WebClient webClient, OAuth2AuthorizedClientManager authorizedClientManager,
+                            @Value("${spotify.api.base-url}") String apiUrl) {
+        super(webClient, authorizedClientManager, apiUrl);
     }
 
     public CurrentUserResponse getCurrentUser() {
-        return get(API_URL + "/me", CurrentUserResponse.class);
+        return get(apiURL + "/me", CurrentUserResponse.class);
     }
 
     public TopTracksResponse getTopTracks(String timeRange, int limit, int offset) {

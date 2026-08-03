@@ -1,5 +1,6 @@
 package com.onion.spotifystats.client;
 import org.jspecify.annotations.NonNull;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest;
@@ -20,12 +21,14 @@ public class SpotifyApiClient {
     private final WebClient webClient;
     private final OAuth2AuthorizedClientManager authorizedClientManager;
 
-    protected static final String API_URL = "https://api.spotify.com/v1";
+    protected final String apiURL;
 
     public SpotifyApiClient(WebClient webClient,
-                            OAuth2AuthorizedClientManager authorizedClientManager) {
+                            OAuth2AuthorizedClientManager authorizedClientManager,
+                            @Value("${spotify.api.base-url}") String apiUrl) {
         this.webClient = webClient;
         this.authorizedClientManager = authorizedClientManager;
+        this.apiURL = apiUrl;
     }
 
     private String getAccessToken() {

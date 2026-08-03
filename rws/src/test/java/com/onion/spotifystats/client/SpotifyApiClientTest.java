@@ -45,19 +45,21 @@ class SpotifyApiClientTest {
 
     @Test
     void testSpotifyApiClientCreation() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
-
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         assertNotNull(client);
     }
 
     @Test
     void testApiUrlConstant() {
-        assertEquals("https://api.spotify.com/v1", SpotifyApiClient.API_URL);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager, "http://localhost");
+        assertEquals("http://localhost", client.apiURL);
     }
 
     @Test
     void throwsWhenNoAuthenticationIsPresent() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
 
         WebClient.RequestBodyUriSpec requestSpec = mock(WebClient.RequestBodyUriSpec.class);
@@ -71,7 +73,8 @@ class SpotifyApiClientTest {
 
     @Test
     void throwsWhenAuthorizedClientManagerReturnsNull() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken());
         WebClient.RequestBodyUriSpec requestSpec = mock(WebClient.RequestBodyUriSpec.class);
@@ -86,7 +89,8 @@ class SpotifyApiClientTest {
 
     @Test
     void throwsWhenAccessTokenIsMissing() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken());
         OAuth2AuthorizedClient authorizedClient = authorizedClient(null);
@@ -102,7 +106,8 @@ class SpotifyApiClientTest {
 
     @Test
     void throwsWhenAccessTokenValueIsNull() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken());
         OAuth2AccessToken accessToken = mock(OAuth2AccessToken.class);
@@ -120,7 +125,8 @@ class SpotifyApiClientTest {
 
     @Test
     void usesBearerTokenForGetRequests() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken());
         OAuth2AccessToken accessToken = mock(OAuth2AccessToken.class);
@@ -151,7 +157,8 @@ class SpotifyApiClientTest {
 
     @Test
     void usesBearerTokenForFunctionUriRequests() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken());
         OAuth2AccessToken accessToken = mock(OAuth2AccessToken.class);
@@ -182,7 +189,8 @@ class SpotifyApiClientTest {
 
     @Test
     void sendsBodiesForPutRequestsAndReturnsVoid() {
-        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager);
+        SpotifyApiClient client = new SpotifyApiClient(webClient, authorizedClientManager,
+                "http://localhost");
         SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken());
         OAuth2AccessToken accessToken = mock(OAuth2AccessToken.class);
