@@ -21,8 +21,6 @@ public class SecurityConfig {
             OAuth2AuthorizedClientService clientService,
             @Value("${FRONTEND_URL}") String frontUrl) {
 
-        System.out.println("Pedrito" + frontUrl);
-
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     var config = new org.springframework.web.cors.CorsConfiguration();

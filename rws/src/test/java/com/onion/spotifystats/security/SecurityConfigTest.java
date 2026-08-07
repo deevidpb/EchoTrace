@@ -4,13 +4,15 @@ import com.onion.spotifystats.SpotifyStatsApplication;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
@@ -24,10 +26,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = SpotifyStatsApplication.class)
 @Import(TestOAuth2Config.class)
+@TestPropertySource(properties = {
+        "FRONTEND_URL=http://127.0.0.1:3000"
+})
 class SecurityConfigTest {
 
     @Autowired
     private WebApplicationContext context;
+
+    @Value("${FRONTEND_URL}")
+    private String frontUrl;
 
     private MockMvc mockMvc;
 
@@ -41,10 +49,10 @@ class SecurityConfigTest {
     @Test
     void unauthenticatedRequestRedirectsToFrontend() throws Exception {
         mockMvc.perform(get("/api/secure-resource")
-                        .header("Origin", "http://localhost:3000"))
+                        .header("Origin", frontUrl))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("http://127.0.0.1:3000?oauth-error=spotify_auth_failed"))
-                .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:3000"));
+                .andExpect(redirectedUrl(frontUrl + "?oauth-error=spotify_auth_failed"))
+                .andExpect(header().string("Access-Control-Allow-Origin", frontUrl));
     }
 
     @Test
