@@ -1,5 +1,6 @@
 package com.onion.spotifystats.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,16 +18,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
-            OAuth2AuthorizedClientService clientService) {
+            OAuth2AuthorizedClientService clientService,
+            @Value("${FRONTEND_URL}") String frontUrl) {
+
+        System.out.println("Pedrito" + frontUrl);
 
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     var config = new org.springframework.web.cors.CorsConfiguration();
 
-                    config.setAllowedOrigins(List.of(
-                            "http://localhost:3000",
-                            "http://127.0.0.1:3000"
-                    ));
+                    config.setAllowedOrigins(List.of(frontUrl));
 
                     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     config.setAllowedHeaders(List.of("*"));
@@ -46,13 +47,13 @@ public class SecurityConfig {
 
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint((request, response, authException) ->
-                            response.sendRedirect("http://127.0.0.1:3000?oauth-error=spotify_auth_failed")
+                            response.sendRedirect(frontUrl + "?oauth-error=spotify_auth_failed")
                         )
                 )
 
                 .oauth2Login(oauth -> oauth
                         .successHandler((request, response, authentication) ->
-                            response.sendRedirect("http://127.0.0.1:3000/dashboard")
+                            response.sendRedirect(frontUrl + "/dashboard")
                         )
                 )
                 .logout(logout -> logout
