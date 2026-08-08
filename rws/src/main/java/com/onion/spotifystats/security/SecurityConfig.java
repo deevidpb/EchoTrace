@@ -21,6 +21,12 @@ public class SecurityConfig {
             OAuth2AuthorizedClientService clientService,
             @Value("${FRONTEND_URL}") String frontUrl) {
 
+        CookieCsrfTokenRepository csrfTokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
+        csrfTokenRepository.setCookieCustomizer(cookie -> cookie.sameSite("None").secure(true).path("/"));
+
+        // 2. Desactivar el enmascaramiento XOR para permitir comparación directa de la cookie con el header
+        CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
+        requestHandler.setCsrfRequestAttributeName(null);
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     var config = new org.springframework.web.cors.CorsConfiguration();
@@ -34,8 +40,8 @@ public class SecurityConfig {
                     return config;
                 }))
                 .csrf(csrf -> csrf
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                        .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
+                        .csrfTokenRepository(csrfTokenRepository)
+                        .csrfTokenRequestHandler(requestHandler)
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login/**", "/oauth2/**").permitAll()
