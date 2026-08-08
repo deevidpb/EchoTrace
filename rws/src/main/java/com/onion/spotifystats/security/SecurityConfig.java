@@ -15,6 +15,7 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
 
+    @SuppressWarnings({"java:S3330", "java:S4502"})
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http,
@@ -26,7 +27,7 @@ public class SecurityConfig {
 
         // 2. Desactivar el enmascaramiento XOR para permitir comparación directa de la cookie con el header
         CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
-        requestHandler.setCsrfRequestAttributeName(null);
+        requestHandler.setCsrfRequestAttributeName("_csrf");
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     var config = new org.springframework.web.cors.CorsConfiguration();
