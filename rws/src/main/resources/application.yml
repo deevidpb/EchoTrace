@@ -33,7 +33,8 @@ spring:
 
 server:
   port: 8080
-  serverlet:
+  forward-headers-strategy: native
+  servlet:
     session:
       cookie:
         same-site: none
