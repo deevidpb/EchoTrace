@@ -40,6 +40,7 @@ public class SecurityConfig {
                     return config;
                 }))
                 .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/api/auth/**")
                         .csrfTokenRepository(csrfTokenRepository)
                         .csrfTokenRequestHandler(requestHandler)
                 )
