@@ -2,20 +2,12 @@ name: Docker
 
 on:
   push:
-    paths:
-      - "rws/**"
-      - "spa/**"
-      - "docker-compose.yml"
-      - "**/Dockerfile"
-      - ".github/workflows/docker.yml"
+    branches:
+      - main
 
   pull_request:
-    paths:
-      - "rws/**"
-      - "spa/**"
-      - "docker-compose.yml"
-      - "**/Dockerfile"
-      - ".github/workflows/docker.yml"
+    branches:
+      - main
 
 jobs:
   docker:
@@ -23,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Build Docker images
         env:

@@ -2,12 +2,12 @@ name: Frontend
 
 on:
   push:
-    paths:
-      - "spa/**"
-      - ".github/workflows/frontend.yml"
+    branches:
+      - main
+
   pull_request:
-    paths:
-      - "spa/**"
+    branches:
+      - main
 
 jobs:
 
@@ -20,13 +20,13 @@ jobs:
         working-directory: spa
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: spa/package-lock.json
+
+      - run: npm install -g npm@11.8.0
 
       - run: npm ci
       - run: npm run build
