@@ -2,12 +2,12 @@ name: Frontend
 
 on:
   push:
-    paths:
-      - "spa/**"
-      - ".github/workflows/frontend.yml"
+    branches:
+      - main
+
   pull_request:
-    paths:
-      - "spa/**"
+    branches:
+      - main
 
 jobs:
 
