@@ -17,10 +17,11 @@ on:
 permissions:
   contents: read
   security-events: write
+  actions: read
 
 jobs:
   codeql:
-    name: CodeQL
+    name: CodeQL (${{ matrix.language }})
     runs-on: ubuntu-latest
 
     strategy:
@@ -39,8 +40,22 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v4
+      - name: Build backend
+        if: matrix.language == 'java'
+        working-directory: rws
+        env:
+          CLIENT_ID: "test_client"
+          CLIENT_SECRET: "test_client-secret"
+          FRONTEND_URL: "http://127.0.0.1:3000"
+          NEXT_PUBLIC_API_URL: "http://127.0.0.1:8080"
+        run: mvn -B verify
+
+      - name: Build frontend
+        if: matrix.language == 'javascript-typescript'
+        working-directory: spa
+        run: |
+          npm ci
+          npm run build
 
       - name: Analyze
         uses: github/codeql-action/analyze@v4
