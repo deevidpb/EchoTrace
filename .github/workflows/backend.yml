@@ -2,12 +2,12 @@ name: Backend
 
 on:
   push:
-    paths:
-      - "rws/**"
-      - ".github/workflows/backend.yml"
+    branches:
+      - main
+
   pull_request:
-    paths:
-      - "rws/**"
+    branches:
+      - main
 
 jobs:
   build:
