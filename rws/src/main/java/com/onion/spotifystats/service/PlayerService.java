@@ -41,6 +41,11 @@ public class PlayerService {
 
     public List<RecentlyPlayedItemDTO> recently(int limit) {
         RecentlyPlayedResponse response =  playerClient.recently(limit);
+
+        if (response == null){
+            return List.of();
+        }
+
         return response.getItems().stream()
                 .map(item -> new RecentlyPlayedItemDTO(
                         TrackMapper.map(item.getTrack()),

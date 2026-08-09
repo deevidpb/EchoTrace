@@ -37,6 +37,11 @@ public class UserService {
 
     public SpotifyUserDTO getMe() {
         CurrentUserResponse user = userClient.getCurrentUser();
+
+        if (user == null) {
+            return new SpotifyUserDTO("", "", "", 0, "", List.of());
+        }
+
         return new SpotifyUserDTO(
                 user.getId(),
                 user.getDisplayName(),
@@ -62,6 +67,10 @@ public class UserService {
         TopArtistsResponse response1 = userClient.getTopArtists(timeRange, limit, 0);
         TopArtistsResponse response2 = userClient.getTopArtists(timeRange, limit, limit);
         TopArtistsResponse response3 = userClient.getTopArtists(timeRange, limit, limit * 2);
+
+        if(response1 == null ||  response2 == null || response3 == null) {
+            return List.of();
+        }
 
         return Stream.of(
                         response1.getItems(),
@@ -131,6 +140,10 @@ public class UserService {
         TopTracksResponse response1 = userClient.getTopTracks(timeRange, limit, 0);
         TopTracksResponse response2 = userClient.getTopTracks(timeRange, limit, limit);
         TopTracksResponse response3 = userClient.getTopTracks(timeRange, limit, limit * 2);
+
+        if(response1 == null || response2 == null || response3 == null){
+            return List.of();
+        }
 
         return Stream.of(
                         response1.getItems(),
@@ -206,6 +219,10 @@ public class UserService {
     public CurrentUserPlaylistsDTO getCurrentUserPlaylists(int limit) {
         CurrentUserPlaylistsResponse response = userClient.getUserPlaylists(limit, 0);
 
+        if (response == null){
+            return new CurrentUserPlaylistsDTO(0, List.of());
+        }
+
         return  new CurrentUserPlaylistsDTO(
                 response.getTotal(),
                 response.getItems().stream().map(item -> new PlayListDTO(
@@ -232,6 +249,10 @@ public class UserService {
     public CurrentUserSavedTracksDTO getCurrentUserSavedTracks(int limit) {
         CurrentUserSavedTracksResponse response = userClient.getUserSavedTracks(limit, 0);
 
+        if (response == null) {
+            return new CurrentUserSavedTracksDTO(0, List.of());
+        }
+
         return new CurrentUserSavedTracksDTO(
                 response.getTotal(),
                 response.getItems().stream().map(item -> new SavedTracksItemDTO(
@@ -243,6 +264,10 @@ public class UserService {
 
     public CurrentUserFollowedArtistsDTO getCurrentUserFollowedArtists(int limit){
         CurrentUserFollowedArtistsResponse response = userClient.getUserFollowedArtists(limit);
+
+        if (response == null){
+            return new CurrentUserFollowedArtistsDTO(0, List.of());
+        }
 
         return new CurrentUserFollowedArtistsDTO(
                 response.getArtists().getTotal(),

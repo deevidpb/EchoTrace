@@ -47,9 +47,9 @@ spotify:
 
 logging:
   level:
-    org.springframework.security: TRACE
-    org.springframework.security.web.csrf: TRACE
-    org.springframework.security.web.context: TRACE
-    org.springframework.security.web.authentication: TRACE
-    org.springframework.security.oauth2: TRACE
-    org.springframework.web: DEBUG
+    root: INFO
+    org.springframework.web: WARN
+    org.springframework.security: WARN
+    com.onion.spotifystats: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

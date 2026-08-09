@@ -54,6 +54,24 @@ class UserServiceTest {
     }
 
     @Test
+    void meNull() {
+        when(userClient.getCurrentUser()).thenReturn(null);
+
+        SpotifyUserDTO dto = userService.getMe();
+
+        assertNotNull(dto);
+        assertEquals("", dto.id());
+        assertEquals("", dto.name());
+        assertEquals("", dto.email());
+        assertEquals(0, dto.followers());
+        assertEquals("", dto.url());
+        assertNotNull(dto.images());
+        assertEquals(List.of(), dto.images());
+    }
+
+
+
+    @Test
     void topArtistsShort(){
         TopArtistsResponse artistsResponse = TestData.mockTopArtistsResponse();
         TopArtistsResponse responseEmpty = TestData.mockTopArtistsResponseEmpty();
@@ -92,6 +110,22 @@ class UserServiceTest {
         assertNotNull(dto);
         assertEquals(1, dto.size());
         assertEquals(artistDto, dto.getFirst());
+    }
+
+    @Test
+    void topArtistsNull(){
+
+        when(userClient.getTopArtists("short_term", 1,0)).thenReturn(null);
+        when(userClient.getTopArtists("short_term", 1,1)).thenReturn(null);
+        when(userClient.getTopArtists("short_term", 1,2)).thenReturn(null);
+
+        when(userClient.getTopArtists("medium_term", 1,0)).thenReturn(null);
+        when(userClient.getTopArtists("medium_term", 1,1)).thenReturn(null);
+        when(userClient.getTopArtists("medium_term", 1,2)).thenReturn(null);
+
+        List<ArtistComplexDTO> dto = userService.topArtists("short_term", 1);
+        assertNotNull(dto);
+        assertEquals(0, dto.size());
     }
 
     @Test
@@ -161,6 +195,21 @@ class UserServiceTest {
     }
 
     @Test
+    void topTracksNull(){
+        when(userClient.getTopTracks("short_term", 1,0)).thenReturn(null);
+        when(userClient.getTopTracks("short_term", 1,1)).thenReturn(null);
+        when(userClient.getTopTracks("short_term", 1,2)).thenReturn(null);
+
+        when(userClient.getTopTracks("medium_term", 1,0)).thenReturn(null);
+        when(userClient.getTopTracks("medium_term", 1,1)).thenReturn(null);
+        when(userClient.getTopTracks("medium_term", 1,2)).thenReturn(null);
+
+        List<TrackDTO> dto = userService.topTracks("short_term", 1);
+        assertNotNull(dto);
+        assertEquals(0, dto.size());
+    }
+
+    @Test
     void topAlbum(){
         List<TrackDTO> tracks = new ArrayList<>();
         TrackDTO trackDto = TrackMapper.map(TestData.mockTrack());
@@ -203,6 +252,18 @@ class UserServiceTest {
     }
 
     @Test
+    void currentUserPlaylistsNull(){
+        when(userClient.getUserPlaylists(1, 0)).thenReturn(null);
+
+        CurrentUserPlaylistsDTO dto = userService.getCurrentUserPlaylists(1);
+
+        assertNotNull(dto);
+        assertEquals(0, dto.total());
+        assertEquals(List.of(), dto.items());
+        assertEquals(0, dto.items().size());
+    }
+
+    @Test
     void currentUserSavedTracks(){
         when(userClient.getUserSavedTracks(1, 0)).thenReturn(TestData.mockCurrentUserSavedTracksResponse());
 
@@ -217,6 +278,18 @@ class UserServiceTest {
     }
 
     @Test
+    void currentUserSavedTracksNull(){
+        when(userClient.getUserSavedTracks(1, 0)).thenReturn(null);
+
+        CurrentUserSavedTracksDTO dto =  userService.getCurrentUserSavedTracks(1);
+
+        assertNotNull(dto);
+        assertEquals(0, dto.total());
+        assertNotNull(dto.tracks());
+        assertEquals(0, dto.tracks().size());
+    }
+
+    @Test
     void currentUserFollowedArtists(){
         CurrentUserFollowedArtistsResponse response =   TestData.mockCurrentUserFollowedArtistsResponse();
 
@@ -227,5 +300,17 @@ class UserServiceTest {
         assertEquals(1, dto.total());
         assertNotNull(dto.artists());
         assertEquals(ArtistMapper.map(response.getArtists().getItems().getFirst()),  dto.artists().getFirst());
+    }
+
+    @Test
+    void currentUserFollowedArtistsNull(){
+        when(userClient.getUserFollowedArtists(1)).thenReturn(null);
+
+        CurrentUserFollowedArtistsDTO dto = userService.getCurrentUserFollowedArtists(1);
+        assertNotNull(dto);
+        assertEquals(0, dto.total());
+        assertNotNull(dto.artists());
+        assertEquals(List.of(),  dto.artists());
+        assertEquals(0, dto.artists().size());
     }
 }

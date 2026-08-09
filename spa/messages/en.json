@@ -96,6 +96,7 @@
     }
 
   },
+
   "topbar": {
     "tiempos": {
       "4sem": "4 weeks",
@@ -105,6 +106,36 @@
     "paginas": {
       "dashboard": "Stats",
       "social": "Social"
+    }
+  },
+
+  "social": {
+    "prox": "Coming Soon",
+    "title": "Social is coming very soon",
+    "description": "We are polishing the EchoTrace social experience. Soon you will be able to connect with friends, compare tastes, discover musical compatibilities, and share your favorite songs all from a single platform.",
+    "cards": {
+      "seguir": {
+        "title": "Follow Friends",
+        "description": "Create your music circle and discover what they are listening to."
+      },
+      "recomendar": {
+        "title": "Recommend Songs",
+        "description": "Share your favorite tracks with a single click."
+      },
+      "compatibilidad": {
+        "title": "Musical Compatibility",
+        "description": "Discover which friends share a similar taste to yours."
+      },
+      "actividad": {
+        "title": "Real-time Activity",
+        "description": "Stay up to date with what your community is listening to."
+      }
+    },
+    "dev": {
+      "title": "Development",
+      "prog": "Progress",
+      "beta": "Beta in preparation",
+      "disponible": "Available in a future update."
     }
   }
 }

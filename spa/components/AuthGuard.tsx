@@ -23,7 +23,9 @@ export default function AuthGuard({
                     credentials: "include",
                 });
 
-                if (!res.ok) {
+                const isAuthenticated = await res.json();
+
+                if (!isAuthenticated) {
                     router.replace("/");
                     return;
                 }

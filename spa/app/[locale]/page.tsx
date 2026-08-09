@@ -24,9 +24,9 @@ export default function Page() {
           credentials: "include",
         });
 
-        console.log("HOME auth:", res.status);
+        const isAuthenticated = await res.json();
 
-        if (res.ok) {
+        if (isAuthenticated) {
           setAuthenticated(true);
           router.replace("/dashboard");
         }

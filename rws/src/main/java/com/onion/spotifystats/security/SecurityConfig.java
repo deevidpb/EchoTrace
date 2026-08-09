@@ -25,7 +25,6 @@ public class SecurityConfig {
         CookieCsrfTokenRepository csrfTokenRepository = CookieCsrfTokenRepository.withHttpOnlyFalse();
         csrfTokenRepository.setCookieCustomizer(cookie -> cookie.sameSite("None").secure(true).path("/"));
 
-        // 2. Desactivar el enmascaramiento XOR para permitir comparación directa de la cookie con el header
         CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
         requestHandler.setCsrfRequestAttributeName("_csrf");
         http
@@ -41,12 +40,12 @@ public class SecurityConfig {
                     return config;
                 }))
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/api/auth/**")
+//                        .ignoringRequestMatchers("/api/auth/**")
                         .csrfTokenRepository(csrfTokenRepository)
                         .csrfTokenRequestHandler(requestHandler)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login/**", "/oauth2/**").permitAll()
+                        .requestMatchers("/login/**", "/oauth2/**", "/api/web/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
 

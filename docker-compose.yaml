@@ -5,17 +5,20 @@ services:
     environment:
       CLIENT_ID: ${CLIENT_ID}
       CLIENT_SECRET: ${CLIENT_SECRET}
-    container_name: spotify-stats-rws
+      FRONTEND_URL: ${FRONTEND_URL}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
+    container_name: rws-echotrace
     ports:
       - "8080:8080"
 
   spa:
     build:
       context: ./spa
-    container_name: spotify-stats-spa
+    container_name: spa-echotrace
     ports:
       - "3000:3000"
     depends_on:
       - rws
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:8080
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}

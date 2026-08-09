@@ -76,6 +76,16 @@ class PlayerServiceTest {
     }
 
     @Test
+    void recentlyNull(){
+        when(playerClient.recently(1)).thenReturn(null);
+
+        List<RecentlyPlayedItemDTO> dto = playerService.recently(1);
+        assertNotNull(dto);
+        assertEquals(List.of(), dto);
+        assertEquals(0, dto.size());
+    }
+
+    @Test
     void playNull(){
         playerService.play(null);
         verify(playerClient).play(null);

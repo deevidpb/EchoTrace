@@ -47,18 +47,15 @@ export function Social() {
                             <span
                                 className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-medium text-primary">
                 <Sparkles className="h-3.5 w-3.5"/>
-                Próximamente
+                                {t("social.prox")}
               </span>
 
                             <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight md:text-5xl">
-                                Social llegará muy pronto
+                                {t("social.title")}
                             </h1>
 
                             <p className="mt-5 max-w-2xl text-muted-foreground">
-                                Estamos terminando la experiencia social de EchoTrace.
-                                Muy pronto podrás conectar con amigos, comparar gustos,
-                                descubrir compatibilidades musicales y compartir canciones
-                                favoritas desde una única plataforma.
+                                {t("social.description")}
                             </p>
 
                         </div>
@@ -67,26 +64,26 @@ export function Social() {
 
                             <FeatureCard
                                 icon={<Users className="h-5 w-5"/>}
-                                title="Seguir amigos"
-                                description="Crea tu círculo musical y descubre qué están escuchando."
+                                title={t("social.cards.seguir.title")}
+                                description={t("social.cards.seguir.description")}
                             />
 
                             <FeatureCard
                                 icon={<Music4 className="h-5 w-5"/>}
-                                title="Recomendar canciones"
-                                description="Comparte tus temas favoritos con un solo clic."
+                                title={t("social.cards.recomendar.title")}
+                                description={t("social.cards.recomendar.description")}
                             />
 
                             <FeatureCard
                                 icon={<Sparkles className="h-5 w-5"/>}
-                                title="Compatibilidad musical"
-                                description="Descubre qué amigos tienen un gusto parecido al tuyo."
+                                title={t("social.cards.compatibilidad.title")}
+                                description={t("social.cards.compatibilidad.description")}
                             />
 
                             <FeatureCard
                                 icon={<BellRing className="h-5 w-5"/>}
-                                title="Actividad en tiempo real"
-                                description="Mantente al día de lo que escucha tu comunidad."
+                                title={t("social.cards.actividad.title")}
+                                description={t("social.cards.actividad.description")}
                             />
 
                         </div>
@@ -96,7 +93,7 @@ export function Social() {
                             <div className="flex items-center gap-3">
                                 <Rocket className="h-5 w-5 text-primary"/>
                                 <h2 className="font-semibold">
-                                    Desarrollo
+                                    {t("social.dev.title")}
                                 </h2>
                             </div>
 
@@ -104,11 +101,11 @@ export function Social() {
 
                                 <div className="mb-3 flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">
-                    Progreso
+                    {t("social.dev.prog")}
                   </span>
 
                                     <span className="font-semibold text-primary">
-                    🚧 Beta en preparación
+                    🚧 {t("social.dev.beta")}
                   </span>
                                 </div>
 
@@ -127,7 +124,7 @@ export function Social() {
                                 <div
                                     className="mt-5 flex items-center justify-center gap-2 text-sm text-muted-foreground">
                                     <Clock3 className="h-4 w-4"/>
-                                    Disponible en una futura actualización.
+                                    {t("social.dev.disponible")}
                                 </div>
 
                             </div>

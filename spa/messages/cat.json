@@ -96,6 +96,7 @@
     }
 
   },
+
   "topbar": {
     "tiempos": {
       "4sem": "4 setmanes",
@@ -105,6 +106,36 @@
     "paginas": {
       "dashboard": "Estadístiques",
       "social": "Social"
+    }
+  },
+
+  "social": {
+    "prox": "Properament",
+    "title": "Social arribarà molt aviat",
+    "description": "Estem enllestint l'experiència social d'EchoTrace. Molt aviat podràs connectar amb amics, comparar gustos, descobrir compatibilitats meves i compartir cançons preferides des d'una única plataforma.",
+    "cards": {
+      "seguir": {
+        "title": "Seguir amics",
+        "description": "Crea el teu cercle musical i descobreix què estan escoltant."
+      },
+      "recomendar": {
+        "title": "Recomanar cançons",
+        "description": "Comparteix els teus temes preferits amb un sol clic."
+      },
+      "compatibilidad": {
+        "title": "Compatibilitat musical",
+        "description": "Descobreix quins amics tenen un gust semblant al teu."
+      },
+      "actividad": {
+        "title": "Activitat en temps real",
+        "description": "Mantingues-te al dia del que escolta la teva comunitat."
+      }
+    },
+    "dev": {
+      "title": "Desenvolupament",
+      "prog": "Progrés",
+      "beta": "Beta en preparació",
+      "disponible": "Disponible en una futura actualització."
     }
   }
 }

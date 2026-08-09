@@ -107,5 +107,36 @@
       "dashboard": "Estadísticas",
       "social": "Social"
     }
+  },
+
+  "social": {
+    "prox": "Próximamente",
+    "title": "Social llegará muy pronto",
+    "description": "Estamos terminando la experiencia social de EchoTrace. Muy pronto podrás conectar con amigos, comparar gustos, descubrir compatibilidades musicales y compartir canciones favoritas desde una única plataforma.",
+    "cards": {
+      "seguir":{
+        "title": "Seguir amigos",
+        "description": "Crea tu círculo musical y descubre qué están escuchando."
+      },
+      "recomendar": {
+        "title": "Recomendar canciones",
+        "description": "Comparte tus temas favoritos con un solo clic."
+      },
+      "compatibilidad":{
+        "title": "Compatibilidad musical",
+        "description": "Descubre qué amigos tienen un gusto parecido al tuyo."
+      },
+      "actividad": {
+        "title": "Actividad en tiempo real",
+        "description": "Mantente al día de lo que escucha tu comunidad."
+      }
+
+    },
+    "dev": {
+      "title": "Desarrollo",
+      "prog":"Progreso",
+      "beta": "Beta en preparación",
+      "disponible": "Disponible en una futura actualización."
+    }
   }
 }
