@@ -28,5 +28,9 @@ jobs:
           cache: npm
           cache-dependency-path: spa/package-lock.json
 
+      - run: |
+          node --version
+          npm --version
+
       - run: npm ci
       - run: npm run build
