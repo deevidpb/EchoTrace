@@ -2,15 +2,12 @@ name: Qodana
 
 on:
   push:
-    paths:
-      - "rws/**"
-      - "spa/**"
-      - ".github/workflows/qodana.yml"
+    branches:
+      - main
 
   pull_request:
-    paths:
-      - "rws/**"
-      - "spa/**"
+    branches:
+      - main
 
   workflow_dispatch:
 
