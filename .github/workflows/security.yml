@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - main
-      - develop
 
   pull_request:
     branches:
       - main
-      - develop
 
   schedule:
     - cron: "30 2 * * 1"
@@ -17,6 +15,7 @@ on:
 permissions:
   contents: read
   security-events: write
+  actions: read
 
 jobs:
   codeql:
@@ -34,13 +33,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Java
+        if: matrix.language == 'java'
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v4
+      - name: Build Java
+        if: matrix.language == 'java'
+        working-directory: rws
+        run: ./mvnw clean package -DskipTests
 
       - name: Analyze
         uses: github/codeql-action/analyze@v4
+        with:
+          upload: false
