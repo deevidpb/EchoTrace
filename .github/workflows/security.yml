@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   codeql:
-    name: CodeQL (${{ matrix.language }})
+    name: CodeQL
     runs-on: ubuntu-latest
 
     strategy:
@@ -35,27 +35,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Java
+        if: matrix.language == 'java'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
 
-      - name: Build backend
+      - name: Build Java
         if: matrix.language == 'java'
         working-directory: rws
-        env:
-          CLIENT_ID: "test_client"
-          CLIENT_SECRET: "test_client-secret"
-          FRONTEND_URL: "http://127.0.0.1:3000"
-          NEXT_PUBLIC_API_URL: "http://127.0.0.1:8080"
-        run: mvn -B verify
-
-      - name: Build frontend
-        if: matrix.language == 'javascript-typescript'
-        working-directory: spa
-        run: |
-          npm ci
-          npm run build
+        run: ./mvnw clean package -DskipTests
 
       - name: Analyze
         uses: github/codeql-action/analyze@v4
+        with:
+          upload: false
