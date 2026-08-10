@@ -32,15 +32,14 @@ public class SecurityConfig {
                     var config = new org.springframework.web.cors.CorsConfiguration();
 
                     config.setAllowedOrigins(List.of(frontUrl));
-
                     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     config.setAllowedHeaders(List.of("*"));
+                    config.setExposedHeaders(List.of("X-XSRF-TOKEN"));
                     config.setAllowCredentials(true);
 
                     return config;
                 }))
                 .csrf(csrf -> csrf
-//                        .ignoringRequestMatchers("/api/auth/**")
                         .csrfTokenRepository(csrfTokenRepository)
                         .csrfTokenRequestHandler(requestHandler)
                 )

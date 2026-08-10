@@ -23,6 +23,11 @@ export default function AuthGuard({
                     credentials: "include",
                 });
 
+                const token = res.headers.get("X-XSRF-TOKEN");
+                if (typeof token === "string") {
+                    sessionStorage.setItem('csrf_token', token);
+                }
+
                 const isAuthenticated = await res.json();
 
                 if (!isAuthenticated) {

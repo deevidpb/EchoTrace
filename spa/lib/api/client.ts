@@ -10,15 +10,8 @@ export class ApiError extends Error {
   }
 }
 
-function getCookie(name: string): string | undefined {
-  return document.cookie
-      .split("; ")
-      .find(cookie => cookie.startsWith(`${name}=`))
-      ?.split("=")[1];
-}
-
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const csrfToken = getCookie("XSRF-TOKEN");
+  const csrfToken = sessionStorage.getItem("csrf_token");
   const res = await fetch(`${API_BASE_URL}${path}`, {
     ...init,
     credentials: "include",

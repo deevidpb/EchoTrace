@@ -66,8 +66,8 @@ Crea un archivo `.env` en la raíz del proyecto  con la siguiente estructura:
 ```env
 FRONTEND_URL=http://127.0.0.1:3000
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8080
-SPOTIFY_CLIENT_ID=your_spotify_client_id
-SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+CLIENT_ID=your_spotify_client_id
+CLIENT_SECRET=your_spotify_client_secret
 SPRING_PROFILES_ACTIVE=local
 ```
 
