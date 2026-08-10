@@ -19,15 +19,8 @@ interface TopbarProps {
   onTimeRangeChange?: (range: TimeRange) => void
 }
 
-function getCookie(name: string) {
-  return document.cookie
-      .split("; ")
-      .find((c) => c.startsWith(name + "="))
-      ?.split("=")[1];
-}
-
 async function handleLogout() {
-  const csrf = getCookie("XSRF-TOKEN");
+  const csrf = sessionStorage.getItem("csrf_token");
 
   await fetch(AUTH_LOGOUT_URL, {
     method: "POST",

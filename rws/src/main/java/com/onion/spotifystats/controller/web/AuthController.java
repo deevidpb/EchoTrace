@@ -20,6 +20,7 @@ public class AuthController {
             HttpServletResponse response
     ) {
         if (csrfToken != null && response != null) {
+            System.out.println(csrfToken.getHeaderName());
             response.setHeader(csrfToken.getHeaderName(), csrfToken.getToken());
         }
 
