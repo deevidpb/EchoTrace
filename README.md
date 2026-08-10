@@ -15,6 +15,22 @@
 
 ## 📸 Screenshots
 
+### Landing Page
+
+![EchoTrace Landing Page](./docs/screenshots/landing.png)
+
+### Dashboard
+
+![EchoTrace Dashboard](./docs/screenshots/dashboard_full.png)
+
+### Spotify Statistics
+
+![EchoTrace Statistics](./docs/screenshots/dashboard_top.png)
+
+### Top Artists & Recently Played
+
+![EchoTrace Music Insights](./docs/screenshots/dashboard_bottom.png)
+
 ---
 
 ## ✨ Features
